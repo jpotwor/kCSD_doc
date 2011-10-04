@@ -16,4 +16,8 @@ Contents:
    :maxdepth: 2
    intro
    tutorial
-
+   constructor
+   methods
+   properties
+   ex1
+   ex2

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; kcsd2d v1 documentation</title>
+    <title>Quick Start &mdash; kcsd2d v1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,6 +23,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="kcsd2d v1 documentation" href="index.html" />
+    <link rel="next" title="Constructor" href="constructor.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
   </head>
   <body>
@@ -30,8 +31,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="constructor.html" title="Constructor"
+             accesskey="N">next</a></li>
+        <li class="right" >
           <a href="intro.html" title="Introduction"
-             accesskey="P">previous</a></li>
+             accesskey="P">previous</a> |</li>
         <li><a href="kcsd2d_index.html">kcsd2d v1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -41,17 +45,100 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-kcsd-class">
-<h2>The kCSD-class<a class="headerlink" href="#the-kcsd-class" title="Permalink to this headline">¶</a></h2>
-<p>Methods carrying out the kCSD method have been implemented as a Class.
-Those no familiar with object oriented programming can imagine the kCSD
-class as machine that provided some input can perform different actions.
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-the-path">
+<h2>Setting the path<a class="headerlink" href="#setting-the-path" title="Permalink to this headline">¶</a></h2>
+<p>Once you downloaded the folder <cite>kcsd2d_class</cite> you should add it to your
+matlab path. It might be easiest to copy the folder to your current matlab
+folder and add it (along with all the subfolders) using <tt class="docutils literal"><span class="pre">genpath()</span></tt>:</p>
+<div class="highlight-python"><pre>&gt;&gt;setpath(genpath('kcsd2d_class'))</pre>
+</div>
+</div>
+<div class="section" id="loading-data">
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s examine an examplary data set with measured potentials.
+Import the mat-file <cite>data_01.mat</cite>:</p>
+<div class="highlight-python"><pre>&gt;&gt;load('data_01.mat')</pre>
+</div>
+<p>Now variables <tt class="docutils literal"><span class="pre">el_pos</span></tt> and <tt class="docutils literal"><span class="pre">pots</span></tt> defining the electrode positions and measured
+potentials have been loaded to the workspace. Check out the elements of the
+<tt class="docutils literal"><span class="pre">el_pos</span></tt> variable:</p>
+<div class="highlight-python"><pre>&gt;&gt;el_pos
+
+el_pos =
+
+    0.1980         0
+    0.3960         0
+    0.5940         0
+    0.7920         0
+    0.0990    0.0990
+    0.2970    0.0990
+    ...</pre>
+</div>
+<p>and it&#8217;s size:</p>
+<div class="highlight-python"><pre>&gt;&gt;size(el_pos)
+
+   ans =
+
+       60     2</pre>
+</div>
+<p>It&#8217;s a two-column matrice, whoose rows denote the <cite>(y, x)</cite> coordinates
+(<cite>y</cite>-vertical, <cite>x</cite>-horizontal) of the electrode positions. Here the variable
+describes 60 electrodes.</p>
+<p>The <tt class="docutils literal"><span class="pre">pots</span></tt> variable here  is a column vector containing the potentials measured
+at the correspondind positions in <tt class="docutils literal"><span class="pre">el_pos</span></tt>:</p>
+<div class="highlight-python"><pre>&gt;&gt;pots =
+
+0.0279
+0.0314
+0.0267
+...
+
+&gt;&gt;size(pots)
+
+ans =
+
+60     1</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">pots</span></tt> does not have to be a single column vector. Potentials come often in time-series.
+In general <tt class="docutils literal"><span class="pre">pots</span></tt> can be an <cite>n x m</cite> matrix, where <cite>n</cite> still  denotes the number of
+electrodes and the consecutive <cite>m</cite> columns contain the evolution the potentials in
+time.</p>
+</div>
+<div class="section" id="introduction-to-the-kcsd-class">
+<h2>Introduction to the kCSD-class<a class="headerlink" href="#introduction-to-the-kcsd-class" title="Permalink to this headline">¶</a></h2>
+<p>Methods for carrying out the kCSD method have been embedded in a Matlab class.
+Those not familiar with object oriented programming can imagine
+classes as definitions of machines that provided some input can perform different actions.
 Like a washing machine given clothes and some washing powder let&#8217;s us
-choose a program of washing the clothes, the kCSD-class method given
+choose a program of washing the clothes, an instance of the  kCSD class  given
 information about the electrode positions and the signals recorded can perform several
 variants of the kCSD method.</p>
+<p>Having the <tt class="docutils literal"><span class="pre">el_pos</span></tt> and <tt class="docutils literal"><span class="pre">pots</span></tt> variables we can call an instance of the kCSD
+class:</p>
+<div class="highlight-python"><pre>&gt;&gt; k = kcsd2d(el_pos, pots);
+calculating b_pot_matrix &amp; K_pot ...
+calculating interp_cross ...</pre>
+</div>
+<p>In the above instruction we created an object <tt class="docutils literal"><span class="pre">k</span></tt> (an instance of the <tt class="docutils literal"><span class="pre">kcsd2d</span></tt> class)
+and provided it with information about the electrode positions and measured
+potentials. We did that by calling the <tt class="docutils literal"><span class="pre">kcsd2d()</span></tt> function, called a <cite>class
+constructor</cite>. The <cite>class constructor</cite> can be provided with several other
+variables representing our prior knowledge about the conditions of the
+experiment. <a class="reference internal" href="constructor.html"><em>Click here</em></a> for a full description of the class consructor.</p>
+<p>But already the <tt class="docutils literal"><span class="pre">k</span></tt> object can show us it&#8217;s estimate of the CSD profile:</p>
+<div class="highlight-python"><pre>&gt;&gt;k.plot_CSD</pre>
+</div>
+<p>Now the class object <cite>k</cite> runs it&#8217;s built in viewer, a GUI that presents the most
+up to date estimation. <tt class="docutils literal"><span class="pre">k.plot_CSD</span></tt> is a method of the <tt class="docutils literal"><span class="pre">kcsd2d</span></tt> class.
+<a class="reference internal" href="methods.html"><em>Click here</em></a> for a complete overview of the <tt class="docutils literal"><span class="pre">kcsd2d</span></tt> class methods.</p>
+<p>The estimated CSD values can be extracted from <cite>k</cite> to the Matlab workspace:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">CSD_est</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">CSD_est</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">X,</span> <span class="pre">Y</span></tt> and <tt class="docutils literal"><span class="pre">CSD_est</span></tt> are properties of the <tt class="docutils literal"><span class="pre">kcsd2d</span></tt> class. <a class="reference internal" href="properties.html"><em>Click here</em></a>
+for an overview of all the <tt class="docutils literal"><span class="pre">kcsd2d</span></tt> class properties.</p>
 </div>
 </div>
 
@@ -64,10 +151,17 @@ variants of the kCSD method.</p>
 <h3><a href="kcsd2d_index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-kcsd-class">The kCSD-class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-the-path">Setting the path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-data">Loading data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-the-kcsd-class">Introduction to the kCSD-class</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constructor.html">Constructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="properties.html">Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex1.html">EX1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex2.html">EX2</a></li>
 </ul>
 
   <h3>This Page</h3>
@@ -96,8 +190,11 @@ variants of the kCSD method.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="constructor.html" title="Constructor"
+             >next</a></li>
+        <li class="right" >
           <a href="intro.html" title="Introduction"
-             >previous</a></li>
+             >previous</a> |</li>
         <li><a href="kcsd2d_index.html">kcsd2d v1 documentation</a> &raquo;</li> 
       </ul>
     </div>
