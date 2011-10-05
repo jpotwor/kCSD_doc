@@ -2,6 +2,9 @@
 Introduction
 ==================================
 
+.. math::
+    x^2
+
 Local feld potentials (LFP), the low-frequency part of extracellular electrical
 recordings, are a measure of the neural activity reflecting dendritic processing of
 synaptic inputs to neuronal populations.

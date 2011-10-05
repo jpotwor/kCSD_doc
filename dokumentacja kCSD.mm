@@ -19,19 +19,25 @@
 </node>
 <node CREATED="1317655416848" ID="ID_1058303939" MODIFIED="1317747258495" TEXT="pokazanie dzialania przykladowej metody">
 <icon BUILTIN="button_ok"/>
-<node CREATED="1317655459560" ID="ID_779704904" MODIFIED="1317655486421" TEXT="odwolanie do dokumentacji wszystkich metod"/>
+<node CREATED="1317655459560" ID="ID_779704904" MODIFIED="1317804133349" TEXT="odwolanie do dokumentacji wszystkich metod">
+<icon BUILTIN="button_ok"/>
+</node>
 </node>
 </node>
 <node CREATED="1317655098817" ID="ID_1479879484" MODIFIED="1317747373051" POSITION="right" TEXT="szczeg&#xf3;&#x142;y">
+<node CREATED="1317747281322" ID="ID_1386077610" MODIFIED="1317747288446" TEXT="dodac sekcje download"/>
 <node CREATED="1317655320673" ID="ID_1939784236" MODIFIED="1317655380598" TEXT="zobaczyc jak sphinx obrabia&#xa;doc-stringi pythona i czy przypadkiem &#xa;nie radzi sobie rowniez z kodem &#xa;matlabowym"/>
 <node CREATED="1317655599192" ID="ID_35630764" MODIFIED="1317655682388" TEXT="szczegolowy rozdzial o konstruktorze"/>
 <node CREATED="1317655613240" ID="ID_1992428329" MODIFIED="1317655717108" TEXT="szczegolowy rozdzial a metodach"/>
 <node CREATED="1317747262522" ID="ID_69194012" MODIFIED="1317747277791" TEXT="szczegolowy rozdzial o properties"/>
-<node CREATED="1317747281322" ID="ID_1386077610" MODIFIED="1317747288446" TEXT="dodac sekcje download"/>
 <node CREATED="1317747293882" ID="ID_1395333023" MODIFIED="1317747306686" TEXT="wymyslec i dodac przyklady"/>
 </node>
 <node CREATED="1317655771399" ID="ID_1335423654" MODIFIED="1317747312735" POSITION="right" TEXT="zrobic repozytorium gitowe na github">
 <icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1317822296972" ID="ID_172849567" MODIFIED="1317822337535" POSITION="right" TEXT="Do zrobienia w kodzie (wrazenia z dokumentacji)">
+<cloud/>
+<node CREATED="1317822341227" ID="ID_1125628336" MODIFIED="1317822359497" TEXT="mozliwosc wsadzania lambdy poprzez konstruktor"/>
 </node>
 </node>
 </map>

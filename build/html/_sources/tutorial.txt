@@ -105,4 +105,4 @@ The estimated CSD values can be extracted from `k` to the Matlab workspace::
     [X, Y, CSD_est] = [k.X, k.Y, k.CSD_est]
 
 ``X, Y`` and ``CSD_est`` are properties of the ``kcsd2d`` class. :doc:`Click here <properties>`
-for an overview of all the ``kcsd2d`` class properties.
+for an overview of all the ``kcsd2d`` class properties
